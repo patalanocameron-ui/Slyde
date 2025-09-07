@@ -35,11 +35,12 @@
     }
     @media (min-width:900px){ .app-container{max-width:none;width:100vw;height:100vh;border-radius:0;box-shadow:none} }
     .screen{display:none;flex-direction:column;height:100%;overflow:hidden}.screen.active{display:flex}
-    .content-area{flex:1;overflow:auto;padding:20px;padding-bottom:100px}@media (min-width:900px){ .content-area{padding:28px} }
+    .content-area{flex:1;overflow:auto;padding:20px;padding-bottom:140px}@media (min-width:900px){ .content-area{padding:28px} }
     .header{display:flex;flex-direction:column;background:var(--secondary);color:var(--primary);flex-shrink:0;position:relative}
-    .status-row{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:14px;font-weight:600}
-    .nav-row{display:flex;align-items:center;justify-content:space-between;padding:15px 20px}
+    .status-row{display:flex;justify-content:space-between;align-items:center;padding:3px 20px;font-size:14px;font-weight:600}
+    .nav-row{display:flex;align-items:center;justify-content:space-between;padding:8px 20px}
     @media (min-width:900px){ .status-row{display:none} }
+    .brand{display:inline-flex;align-items:center;font-weight:800;letter-spacing:.2px}
     .brand-text{font-size:18px}
     @media (min-width:900px){ .brand-text{font-size:20px} }
     .hamburger{background:transparent;border:1px solid rgba(255,247,234,.35);border-radius:10px;color:var(--primary);padding:8px 10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
@@ -48,7 +49,6 @@
     .menu{display:none;position:absolute;right:16px;top:56px;z-index:20;background:var(--primary-2);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:180px;overflow:hidden}
     .menu.open{display:block}.menu button{display:block;width:100%;text-align:left;background:transparent;border:none;color:var(--text);padding:10px 14px;cursor:pointer;font-size:14px}
     .menu button:hover{background:var(--primary-3)}
-    .brand{display:inline-flex;align-items:center;font-weight:800;letter-spacing:.2px}
     .login-container{padding:40px 20px;text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%;max-width:520px;margin:0 auto}
     .logo{font-size:32px;font-weight:700;color:var(--secondary);margin-bottom:40px}
     .input-group{margin-bottom:20px;text-align:left}.input-label{display:block;margin-bottom:8px;font-weight:500}
@@ -127,8 +127,8 @@
     <defs>
       <pattern id="currency-tile" width="160" height="160" patternUnits="userSpaceOnUse">
         <rect width="160" height="160" fill="#ffffff" />
-        <g fill="none" stroke="#b7b7b7" stroke-width="0.9" stroke-linejoin="round" stroke-linecap="round"
-           paint-order="stroke" font-weight="300" font-size="34" text-anchor="middle" dominant-baseline="middle">
+        <g fill="none" stroke="#b7b7b7" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"
+           paint-order="stroke" font-weight="300" font-size="34" text-anchor="middle" dominant-baseline="middle" opacity="0.3">
           <text x="32"  y="32">$</text>
           <text x="80"  y="32">€</text>
           <text x="128" y="32">£</text>
@@ -168,7 +168,6 @@
       </div>
     </section>
 
-```
 <section class="screen" id="dashboard" aria-labelledby="dash-title">
   <header class="header">
     <div class="status-row">
@@ -199,52 +198,55 @@
       </div>
     </div>
 
-    <section aria-labelledby="calc-title">
-      <h3 id="calc-title" style="margin:0 0 8px 0;color:var(--secondary)">Loan Calculator</h3>
+```
+<section aria-labelledby="calc-title">
+  <h3 id="calc-title" style="margin:0 0 8px 0;color:var(--secondary)">Loan Calculator</h3>
 
-      <div class="quick-amounts">
-        <div class="quick-amount-input">
-          <input class="input" id="custom-amount" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount (0 to 25,000)">
-        </div>
-        <button class="quick-amount active" data-amount="100" type="button">$100</button>
-        <button class="quick-amount" data-amount="500" type="button">$500</button>
-        <button class="quick-amount" data-amount="1000" type="button">$1000</button>
-      </div>
-
-      <div class="slider-container" style="margin-bottom:10px">
-        <label for="rate-slider">Interest Rate: <span id="rate-display">5%</span></label>
-        <input class="slider" id="rate-slider" type="range" min="0" max="50" value="5" aria-valuemin="0" aria-valuemax="50">
-      </div>
-      <div class="slider-container">
-        <label for="term-slider">Term: <span id="term-display">12 months</span></label>
-        <input class="slider" id="term-slider" type="range" min="1" max="36" value="12" aria-valuemin="1" aria-valuemax="36">
-      </div>
-
-      <div class="payback-row">
-        <label class="input-label" for="payback-switch">Pay Back Amount</label>
-        <label class="switch" aria-label="Toggle Pay Back Amount">
-          <input type="checkbox" id="payback-switch" /><span class="switch-handle"></span>
-        </label>
-      </div>
-      <div id="payback-container">
-        <div class="payback-input" style="margin-bottom:6px">
-          <input class="input" type="text" id="payback-amount" placeholder="Enter total to pay back">
-        </div>
-        <div class="hint" id="implied-rate-hint" style="display:none;margin-top:4px">Implied interest: <span id="implied-rate">0%</span> (capped at 200%).</div>
-      </div>
-
-      <div class="summary" style="margin-top:15px;text-align:center">
-        <strong><span id="payment-label">Monthly Payment: </span>$<span id="monthly-payment">0.00</span></strong>
-      </div>
-    </section>
-
-    <div class="payment-methods">
-      <button class="payment-method" type="button">Weekly</button>
-      <button class="payment-method" type="button">Biweekly</button>
-      <button class="payment-method active" type="button">Monthly</button>
+  <div class="quick-amounts">
+    <div class="quick-amount-input">
+      <input class="input" id="custom-amount" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount (0 to 25,000)">
     </div>
+    <button class="quick-amount active" data-amount="100" type="button">$100</button>
+    <button class="quick-amount" data-amount="500" type="button">$500</button>
+    <button class="quick-amount" data-amount="1000" type="button">$1000</button>
+  </div>
 
-    <button class="btn" id="viewActivityBtn" type="button">View All Activity</button>
+  <div class="slider-container" style="margin-bottom:10px">
+    <label for="rate-slider">Interest Rate: <span id="rate-display">5%</span></label>
+    <input class="slider" id="rate-slider" type="range" min="0" max="50" value="5" aria-valuemin="0" aria-valuemax="50">
+  </div>
+  <div class="slider-container">
+    <label for="term-slider">Term: <span id="term-display">12 months</span></label>
+    <input class="slider" id="term-slider" type="range" min="1" max="36" value="12" aria-valuemin="1" aria-valuemax="36">
+  </div>
+
+  <div class="payback-row">
+    <label class="input-label" for="payback-switch">Pay Back Amount</label>
+    <label class="switch" aria-label="Toggle Pay Back Amount">
+      <input type="checkbox" id="payback-switch" /><span class="switch-handle"></span>
+    </label>
+  </div>
+  <div id="payback-container">
+    <div class="payback-input" style="margin-bottom:6px">
+      <input class="input" type="text" id="payback-amount" placeholder="Enter total to pay back">
+    </div>
+    <div class="hint" id="implied-rate-hint" style="display:none;margin-top:4px">Implied interest: <span id="implied-rate">0%</span> (capped at 200%).</div>
+  </div>
+
+  <div class="summary" style="margin-top:15px;text-align:center">
+    <strong><span id="payment-label">Monthly Payment: </span>$<span id="monthly-payment">0.00</span></strong>
+  </div>
+</section>
+
+<div class="payment-methods">
+  <button class="payment-method" type="button">Weekly</button>
+  <button class="payment-method" type="button">Biweekly</button>
+  <button class="payment-method active" type="button">Monthly</button>
+</div>
+
+<button class="btn" id="viewActivityBtn" type="button">View All Activity</button>
+```
+
   </div>
 </section>
 
@@ -279,58 +281,61 @@
         <span class="chip" data-purpose="Auto">Auto</span>
       </div>
 
-      <div class="quick-amounts">
-        <div class="quick-amount-input">
-          <input class="input" id="custom-amount-borrow" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount for borrowing">
-        </div>
-        <button class="quick-amount active" data-amount="100" type="button">$100</button>
-        <button class="quick-amount" data-amount="300" type="button">$300</button>
-        <button class="quick-amount" data-amount="1000" type="button">$1000</button>
-      </div>
-
-      <div class="row">
-        <div class="slider-container">
-          <label for="rate-borrow">Interest Rate: <span id="rate-display-borrow">10%</span></label>
-          <input class="slider" id="rate-borrow" type="range" min="0" max="50" value="10" aria-valuemax="50">
-        </div>
-        <div class="slider-container">
-          <label for="term-borrow">Term: <span id="term-display-borrow">6 months</span></label>
-          <input class="slider" id="term-borrow" type="range" min="1" max="36" value="6">
-        </div>
-      </div>
-
-      <div class="payback-row">
-        <label class="input-label" for="payback-switch-borrow">Pay Back Amount</label>
-        <label class="switch" aria-label="Toggle Pay Back Amount (Borrow)">
-          <input type="checkbox" id="payback-switch-borrow" /><span class="switch-handle"></span>
-        </label>
-      </div>
-      <div id="payback-container-borrow">
-        <div class="payback-input" style="margin-bottom:6px">
-          <input class="input" type="text" id="payback-amount-borrow" placeholder="Enter total to pay back">
-        </div>
-        <div class="hint" id="implied-rate-hint-borrow" style="display:none;margin-top:4px">
-          Implied interest: <span id="implied-rate-borrow">0%</span> (capped at 200%).
-        </div>
-      </div>
-
-      <div class="payment-methods" id="payment-methods-borrow">
-        <button class="payment-method" type="button">Weekly</button>
-        <button class="payment-method" type="button">Biweekly</button>
-        <button class="payment-method active" type="button">Monthly</button>
-      </div>
-
-      <div class="summary" id="summary-borrow">
-        <div><strong>Estimated Payment:</strong> <span id="borrow-payment-label">Monthly</span> $<span id="borrow-payment">0.00</span></div>
-        <div class="muted" id="borrow-summary-line" style="margin-top:6px">Term 6 months • Interest 10% • Purpose General</div>
-      </div>
+```
+  <div class="quick-amounts">
+    <div class="quick-amount-input">
+      <input class="input" id="custom-amount-borrow" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount for borrowing">
     </div>
+    <button class="quick-amount active" data-amount="100" type="button">$100</button>
+    <button class="quick-amount" data-amount="300" type="button">$300</button>
+    <button class="quick-amount" data-amount="1000" type="button">$1000</button>
+  </div>
 
-    <div class="inline-actions" style="margin-top:8px">
-      <button class="btn-secondary btn" type="button" data-screen="dashboard">Back</button>
-      <button class="btn" id="selectLenderBtn" type="button">Select Lender</button>
-      <button class="btn" id="submitBorrow" type="button" style="display:none">Submit Borrow Request</button>
+  <div class="row">
+    <div class="slider-container">
+      <label for="rate-borrow">Interest Rate: <span id="rate-display-borrow">10%</span></label>
+      <input class="slider" id="rate-borrow" type="range" min="0" max="50" value="10" aria-valuemax="50">
     </div>
+    <div class="slider-container">
+      <label for="term-borrow">Term: <span id="term-display-borrow">6 months</span></label>
+      <input class="slider" id="term-borrow" type="range" min="1" max="36" value="6">
+    </div>
+  </div>
+
+  <div class="payback-row">
+    <label class="input-label" for="payback-switch-borrow">Pay Back Amount</label>
+    <label class="switch" aria-label="Toggle Pay Back Amount (Borrow)">
+      <input type="checkbox" id="payback-switch-borrow" /><span class="switch-handle"></span>
+    </label>
+  </div>
+  <div id="payback-container-borrow">
+    <div class="payback-input" style="margin-bottom:6px">
+      <input class="input" type="text" id="payback-amount-borrow" placeholder="Enter total to pay back">
+    </div>
+    <div class="hint" id="implied-rate-hint-borrow" style="display:none;margin-top:4px">
+      Implied interest: <span id="implied-rate-borrow">0%</span> (capped at 200%).
+    </div>
+  </div>
+
+  <div class="payment-methods" id="payment-methods-borrow">
+    <button class="payment-method" type="button">Weekly</button>
+    <button class="payment-method" type="button">Biweekly</button>
+    <button class="payment-method active" type="button">Monthly</button>
+  </div>
+
+  <div class="summary" id="summary-borrow">
+    <div><strong>Estimated Payment:</strong> <span id="borrow-payment-label">Monthly</span> $<span id="borrow-payment">0.00</span></div>
+    <div class="muted" id="borrow-summary-line" style="margin-top:6px">Term 6 months • Interest 10% • Purpose General</div>
+  </div>
+</div>
+
+<div class="inline-actions" style="margin-top:8px">
+  <button class="btn-secondary btn" type="button" data-screen="dashboard">Back</button>
+  <button class="btn" id="selectLenderBtn" type="button">Select Lender</button>
+  <button class="btn" id="submitBorrow" type="button" style="display:none">Submit Borrow Request</button>
+</div>
+```
+
   </div>
 </section>
 
@@ -358,60 +363,63 @@
     <div class="panel">
       <h4>Lend Offer</h4>
 
-      <div class="quick-amounts">
-        <div class="quick-amount-input">
-          <input class="input" id="custom-amount-lend" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount to lend">
-        </div>
-        <button class="quick-amount active" data-amount="100" type="button">$100</button>
-        <button class="quick-amount" data-amount="500" type="button">$500</button>
-        <button class="quick-amount" data-amount="2500" type="button">$2500</button>
-      </div>
-
-      <div class="row">
-        <div class="slider-container">
-          <label for="rate-lend">Target APR: <span id="rate-display-lend">8%</span></label>
-          <input class="slider" id="rate-lend" type="range" min="0" max="50" value="8" aria-valuemax="50">
-        </div>
-        <div class="slider-container">
-          <label for="term-lend">Term: <span id="term-display-lend">12 months</span></label>
-          <input class="slider" id="term-lend" type="range" min="1" max="36" value="12">
-        </div>
-      </div>
-
-      <div class="chips" id="risk-chips" aria-label="Risk tier">
-        <span class="chip active" data-risk="Balanced">Balanced</span>
-        <span class="chip" data-risk="Conservative">Conservative</span>
-        <span class="chip" data-risk="Growth">Growth</span>
-      </div>
-
-      <div class="payback-row">
-        <label class="input-label" for="autoinvest-switch">Auto-Invest</label>
-        <label class="switch" aria-label="Toggle Auto-Invest">
-          <input type="checkbox" id="autoinvest-switch" /><span class="switch-handle"></span>
-        </label>
-      </div>
-      <div class="hint">When enabled, your repayments auto-recycle into new offers in the selected risk tier.</div>
-
-      <div class="panel" style="margin-top:14px">
-        <h4>Funding Source</h4>
-        <div class="payment-methods" id="funding-methods">
-          <button class="payment-method active" type="button">Balance</button>
-          <button class="payment-method" type="button">Bank</button>
-          <button class="payment-method" type="button">Card</button>
-        </div>
-        <div class="muted">Available balance: <strong>$4,847.23</strong></div>
-      </div>
-
-      <div class="summary" id="summary-lend">
-        <div><strong>Expected Payment:</strong> <span id="lend-payment-label">Monthly</span> $<span id="lend-payment">0.00</span></div>
-        <div class="muted" id="lend-summary-line" style="margin-top:6px">Term 12 months • APR 8% • Risk Balanced</div>
-      </div>
+```
+  <div class="quick-amounts">
+    <div class="quick-amount-input">
+      <input class="input" id="custom-amount-lend" type="text" placeholder="Custom ($0–$25,000)" inputmode="numeric" aria-label="Custom amount to lend">
     </div>
+    <button class="quick-amount active" data-amount="100" type="button">$100</button>
+    <button class="quick-amount" data-amount="500" type="button">$500</button>
+    <button class="quick-amount" data-amount="2500" type="button">$2500</button>
+  </div>
 
-    <div class="inline-actions" style="margin-top:8px">
-      <button class="btn-secondary btn" type="button" data-screen="dashboard">Back</button>
-      <button class="btn" id="publishLend" type="button">Publish Lend Offer</button>
+  <div class="row">
+    <div class="slider-container">
+      <label for="rate-lend">Target APR: <span id="rate-display-lend">8%</span></label>
+      <input class="slider" id="rate-lend" type="range" min="0" max="50" value="8" aria-valuemax="50">
     </div>
+    <div class="slider-container">
+      <label for="term-lend">Term: <span id="term-display-lend">12 months</span></label>
+      <input class="slider" id="term-lend" type="range" min="1" max="36" value="12">
+    </div>
+  </div>
+
+  <div class="chips" id="risk-chips" aria-label="Risk tier">
+    <span class="chip active" data-risk="Balanced">Balanced</span>
+    <span class="chip" data-risk="Conservative">Conservative</span>
+    <span class="chip" data-risk="Growth">Growth</span>
+  </div>
+
+  <div class="payback-row">
+    <label class="input-label" for="autoinvest-switch">Auto-Invest</label>
+    <label class="switch" aria-label="Toggle Auto-Invest">
+      <input type="checkbox" id="autoinvest-switch" /><span class="switch-handle"></span>
+    </label>
+  </div>
+  <div class="hint">When enabled, your repayments auto-recycle into new offers in the selected risk tier.</div>
+
+  <div class="panel" style="margin-top:14px">
+    <h4>Funding Source</h4>
+    <div class="payment-methods" id="funding-methods">
+      <button class="payment-method active" type="button">Balance</button>
+      <button class="payment-method" type="button">Bank</button>
+      <button class="payment-method" type="button">Card</button>
+    </div>
+    <div class="muted">Available balance: <strong>$4,847.23</strong></div>
+  </div>
+
+  <div class="summary" id="summary-lend">
+    <div><strong>Expected Payment:</strong> <span id="lend-payment-label">Monthly</span> $<span id="lend-payment">0.00</span></div>
+    <div class="muted" id="lend-summary-line" style="margin-top:6px">Term 12 months • APR 8% • Risk Balanced</div>
+  </div>
+</div>
+
+<div class="inline-actions" style="margin-top:8px">
+  <button class="btn-secondary btn" type="button" data-screen="dashboard">Back</button>
+  <button class="btn" id="publishLend" type="button">Publish Lend Offer</button>
+</div>
+```
+
   </div>
 </section>
 
@@ -441,33 +449,36 @@
       <div class="balance-subtitle">Available Balance</div>
     </div>
 
-    <div class="connection-grid">
-      <div class="connection-card" tabindex="0">
-        <div class="connection-icon" aria-hidden="true">💳</div>
-        <div style="font-weight:600">Bank</div>
-        <div class="transaction-sub" style="margin-top:5px">Checking</div>
-        <div style="background:var(--success);color:#fff;padding:4px 8px;border-radius:12px;font-size:10px;margin-top:8px;font-weight:700;display:inline-block">CONNECTED</div>
-      </div>
-      <div class="connection-card" tabindex="0">
-        <div class="connection-icon" aria-hidden="true">₿</div>
-        <div style="font-weight:600">Crypto</div>
-        <div class="transaction-sub" style="margin-top:5px">Bitcoin</div>
-        <div style="background:var(--pending);color:#fff;padding:4px 8px;border-radius:12px;font-size:10px;margin-top:8px;font-weight:700;display:inline-block">PENDING</div>
-      </div>
-    </div>
+```
+<div class="connection-grid">
+  <div class="connection-card" tabindex="0">
+    <div class="connection-icon" aria-hidden="true">💳</div>
+    <div style="font-weight:600">Bank</div>
+    <div class="transaction-sub" style="margin-top:5px">Checking</div>
+    <div style="background:var(--success);color:#fff;padding:4px 8px;border-radius:12px;font-size:10px;margin-top:8px;font-weight:700;display:inline-block">CONNECTED</div>
+  </div>
+  <div class="connection-card" tabindex="0">
+    <div class="connection-icon" aria-hidden="true">₿</div>
+    <div style="font-weight:600">Crypto</div>
+    <div class="transaction-sub" style="margin-top:5px">Bitcoin</div>
+    <div style="background:var(--pending);color:#fff;padding:4px 8px;border-radius:12px;font-size:10px;margin-top:8px;font-weight:700;display:inline-block">PENDING</div>
+  </div>
+</div>
 
-    <div class="chart-container">
-      <h3 style="margin-bottom:15px;color:var(--secondary)">Portfolio Performance</h3>
-      <div class="mini-chart" role="img" aria-label="Performance chart">
-        <svg width="100%" height="120" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
-          <polyline fill="none" stroke="#183A67" stroke-width="3" points="0,90 60,70 120,50 180,55 240,30 300,35"></polyline>
-          <circle cx="300" cy="35" r="4" fill="#183A67"></circle>
-        </svg>
-      </div>
-      <div class="transaction-sub" style="margin-top:10px">+12.5% this month</div>
-    </div>
+<div class="chart-container">
+  <h3 style="margin-bottom:15px;color:var(--secondary)">Portfolio Performance</h3>
+  <div class="mini-chart" role="img" aria-label="Performance chart">
+    <svg width="100%" height="120" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+      <polyline fill="none" stroke="#183A67" stroke-width="3" points="0,90 60,70 120,50 180,55 240,30 300,35"></polyline>
+      <circle cx="300" cy="35" r="4" fill="#183A67"></circle>
+    </svg>
+  </div>
+  <div class="transaction-sub" style="margin-top:10px">+12.5% this month</div>
+</div>
 
-    <button class="btn" id="addAccountBtn" type="button">Add Account</button>
+<button class="btn" id="addAccountBtn" type="button">Add Account</button>
+```
+
   </div>
 </section>
 
@@ -497,16 +508,19 @@
       <h3>John Smith</h3>
     </div>
 
-    <div class="profile-section">
-      <div class="profile-field"><span>Username</span><span class="transaction-sub">Copilotwhfk</span></div>
-      <div class="profile-field"><span>Email</span><span class="transaction-sub">john@example.com</span></div>
-      <div class="profile-field"><span>Billing Address</span><span class="transaction-sub">123 Maple Wood Pt</span></div>
-      <div class="profile-field"><span>Full Name</span><span class="transaction-sub">John M. Smith</span></div>
-      <div class="profile-field"><span>Campaign Pass</span><span class="transaction-sub">•••• 8347</span></div>
-    </div>
+```
+<div class="profile-section">
+  <div class="profile-field"><span>Username</span><span class="transaction-sub">Copilotwhfk</span></div>
+  <div class="profile-field"><span>Email</span><span class="transaction-sub">john@example.com</span></div>
+  <div class="profile-field"><span>Billing Address</span><span class="transaction-sub">123 Maple Wood Pt</span></div>
+  <div class="profile-field"><span>Full Name</span><span class="transaction-sub">John M. Smith</span></div>
+  <div class="profile-field"><span>Campaign Pass</span><span class="transaction-sub">•••• 8347</span></div>
+</div>
 
-    <button class="btn btn-secondary" id="editProfileBtn" type="button" style="margin-bottom:15px">Edit Profile</button>
-    <button class="btn" id="signOutBtn" type="button">Sign Out</button>
+<button class="btn btn-secondary" id="editProfileBtn" type="button" style="margin-bottom:15px">Edit Profile</button>
+<button class="btn" id="signOutBtn" type="button">Sign Out</button>
+```
+
   </div>
 </section>
 
@@ -516,7 +530,7 @@
       <span>9:41 AM</span><span>$lyde</span><span>📶&nbsp;&nbsp;🔋</span>
     </div>
     <div class="nav-row">
-      <div class="brand"><span class="brand-text" id="activity-title">$lyde</span></div>
+      <div class="brand"><span class="brand-text" id="activity-title">Activity</span></div>
       <button class="hamburger" id="hamburger4" aria-expanded="false" aria-controls="menu4" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
@@ -609,9 +623,12 @@
       </div>
     </div>
 
-    <div class="inline-actions" style="margin-top:8px">
-      <button class="btn-secondary btn" type="button" data-screen="borrow">Cancel</button>
-    </div>
+```
+<div class="inline-actions" style="margin-top:8px">
+  <button class="btn-secondary btn" type="button" data-screen="borrow">Cancel</button>
+</div>
+```
+
   </div>
 </section>
 
@@ -623,7 +640,6 @@
   <button class="mobile-nav-btn" data-screen="borrow" type="button" aria-label="Borrow">💸</button>
   <button class="mobile-nav-btn" data-screen="lend" type="button" aria-label="Lend">🤝</button>
 </nav>
-```
 
   </div>
 

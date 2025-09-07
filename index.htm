@@ -120,6 +120,8 @@
     .list-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--primary-2);cursor:pointer}
     .list-item:hover{border-color:var(--secondary)}
     .list-avatar{width:40px;height:40px;border-radius:50%;background:var(--secondary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+    .mobile-bottom-padding{height:120px;background:#ffffff;margin-top:40px;display:block;border-top:1px solid var(--border)}
+    @media (min-width:900px){ .mobile-bottom-padding{display:none} }
   </style>
 </head>
 <body>
@@ -245,6 +247,7 @@
 </div>
 
 <button class="btn" id="viewActivityBtn" type="button">View All Activity</button>
+<div class="mobile-bottom-padding"></div>
 ```
 
   </div>
@@ -334,6 +337,7 @@
   <button class="btn" id="selectLenderBtn" type="button">Select Lender</button>
   <button class="btn" id="submitBorrow" type="button" style="display:none">Submit Borrow Request</button>
 </div>
+<div class="mobile-bottom-padding"></div>
 ```
 
   </div>
@@ -418,6 +422,7 @@
   <button class="btn-secondary btn" type="button" data-screen="dashboard">Back</button>
   <button class="btn" id="publishLend" type="button">Publish Lend Offer</button>
 </div>
+<div class="mobile-bottom-padding"></div>
 ```
 
   </div>
@@ -477,6 +482,7 @@
 </div>
 
 <button class="btn" id="addAccountBtn" type="button">Add Account</button>
+<div class="mobile-bottom-padding"></div>
 ```
 
   </div>
